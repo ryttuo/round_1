@@ -20,6 +20,20 @@
 		</style>
 		<script type="text/javascript">
 
+		//I need extra function because .sort() works sorting first Uppercase letters then lowercase.
+		function sortCaseInsensitive(string_a, string_b) {
+
+		    if(string_a.toLowerCase() !== string_b.toLowerCase()) {
+		        
+		        string_a = string_a.toLowerCase();
+
+		        string_b = string_b.toLowerCase();
+		    }
+		    //Priority for Uppercase
+		    return string_a > string_b ? 1 : (string_a < string_b ? -1 : 0);
+
+		}	
+
 		$(document).ready(function(){
 			
 			//get bind event when input changes on real time
@@ -29,7 +43,7 @@
 				var input_word = $(this).val();
 
 				//first I make an array with string, then sort it and finally come back to string
-				var well_ordered_result = input_word.split('').sort().join('');
+				var well_ordered_result = input_word.split('').sort( sortCaseInsensitive ).join('');
 
 				//last part is put result on a label
 				$('label.result').text(well_ordered_result)
