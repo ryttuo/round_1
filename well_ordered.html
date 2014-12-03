@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Well-ordered word</title>
+		 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		 <style>
+			h3 {
+				text-align: center;
+			}
+			div.well {
+			    margin: 40px;
+			} 
+			div.well label {
+				
+				width: 10px;
+			}
+			div.well label.result{
+				font-weight: bold;
+			}
+		</style>
+		<script type="text/javascript">
+
+		$(document).ready(function(){
+			
+			//get bind event when input changes on real time
+			$('div.well input').bind('keyup', function (e){
+
+				//get value from input
+				var input_word = $(this).val();
+
+				//first I make an array with string, then sort it and finally come back to string
+				var well_ordered_result = input_word.split('').sort().join('');
+
+				//last part is put result on a label
+				$('label.result').text(well_ordered_result)
+			});
+			
+			
+		});
+
+		</script>
+	</head>
+	<body>
+		<h3>Well-ordered Test round #1</h3>
+		<div class="well">
+			<label>Insert your word please:</label>
+			<input type="text" value="">
+		</div>
+		<div class="well">
+			<label>Well-ordered result:</label>
+			<label class="result"></label>
+		</div>
+	</body>
+</html>
+
